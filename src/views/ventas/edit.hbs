@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Venta</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Editar Venta</h2>
+            </div>
+            <div class="card-body">
+                <form action="/ventas/edit/{{venta.VentaID}}" method="post">
+                    <div class="form-group">
+                        <label for="ClienteID">Cliente</label>
+                        <select class="form-control" name="ClienteID" id="ClienteID" required>
+                            {{#each clientes}}
+                                <option value="{{this.ClienteID}}" {{#ifCond this.ClienteID ../venta.ClienteID}}selected{{/ifCond}}>{{this.Nombres}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>DETALLES:</label>
+                        <div id="productos">
+                            {{#each detalles}}
+                                <div class="form-row mt-2">
+                                    <div class="col">
+                                        <label>PRODUCTO</label>
+                                        <select class="form-control" name="ProductoID[]" required>
+                                            {{#each productos}}
+                                                <option value="{{this.ProductoID}}" {{#ifCond this.ProductoID ../this.ProductoID}}selected{{/ifCond}}>{{this.ProductoCompleto}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label>CANTIDAD</label>
+                                        <input type="number" class="form-control" name="Cantidad[]" value="{{this.Cantidad}}" min="0" required>
+                                    </div>
+                                    <div class="col">
+                                        <label>PRECIO UNITARIO</label>
+                                        <input type="number" class="form-control" name="PrecioUnitario[]" value="{{this.Precio}}" required readonly>
+                                    </div>
+                                    <div class="col">
+                                        <label>TOTAL</label>
+                                        <input type="number" class="form-control" name="Totalproducto[]" value="{{this.Cantidad * this.Precio}}" readonly>
+                                    </div>
+                                </div>
+                            {{/each}}
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="Total">Total</label>
+                            <input type="number" class="form-control" name="Total" id="Total" value="{{venta.Total}}" step="0.01" required readonly>
+                        </div>
+                        <button type="submit" class="btn btn-success mt-4">Actualizar Venta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        // Lógica para actualizar el total
+        function updateTotal() {
+            let total = 0;
+            document.querySelectorAll('input[name="Totalproducto[]"]').forEach(function(input) {
+                total += parseFloat(input.value) || 0;
+            });
+            document.getElementById('Total').value = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>

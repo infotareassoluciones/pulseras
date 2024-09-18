@@ -1,0 +1,5 @@
+/.babelrc
+/.env
+/.firebaserc
+/.vscode
+/node_modules

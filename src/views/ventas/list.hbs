@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+            <table class="table text-center mx-auto">
+                &nbsp;
+                <thead>
+                    <h3 class="text-center text-upercase p-2">REPORTE DE VENTAS</h3>
+                    <a href="/ventas/add/" class="btn btn-success"><i class="fa-solid fa-pencil">VENDER</i></a>
+                    <tr class="table-dark">
+                                <th scope="col">Nombre del Cliente</th>
+                                <th scope="col">Fecha de Venta</th>
+                                <th scope="col">Cantidad de Productos</th>
+                                <th scope="col">Total Dinero</th>
+                                <th scope="col">OPCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each ventas}}
+                                <tr>
+                                    <td>{{this.ClienteNombre}}</td>
+                                    <td>{{this.FechaVentas}}</td>
+                                    <td>{{this.CantidadProductos}}</td>
+                                    <td>${{this.TotalDinero}}</td>
+                                    <td><div class="btn-group">
+                                <a href="/ventas/edit/{{VentaID}}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                                <a href="/ventas/list" class="btn btn-danger" onclick="event.preventDefault(); if(confirm('¿Estás seguro de que deseas eliminar este Producto?')) { window.location.href='/productos/delete/{{VentaID}}'; }"><i class="fa-solid fa-trash"></i></a>
+
+                            </div>
+                            </td>                          
+                        </tr>
+                        
+                        
+                    {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr class="table-dark">
+                        
+                    </tr>
+                </tfoot>
+            </table>
+            
+    </div>
+</div>
