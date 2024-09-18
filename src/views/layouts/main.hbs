@@ -29,5 +29,16 @@
                 .catch(err => console.error('Error al verificar la sesión:', err));
         }, 5 * 60 * 1000); // 5 minutos
     </script>
+    <script>
+    // Ocultar navegación en 'catalogos/list' pero mantener la barra
+   /* const currentPath = window.location.pathname;
+        if (currentPath.startsWith('/catalogos')) {
+            const navItems = document.querySelectorAll('.navbar-nav .nav-item');
+            navItems.forEach(item => {
+                item.style.display = 'none'; // Oculta cada opción
+            });
+        }*/
+</script>
+
 </body>
 </html>

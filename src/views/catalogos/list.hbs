@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Productos</title>
+    <title>Catálogo de Accesorios</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -14,7 +14,7 @@
                 {{#each catalogos}}
                     <div class="col-md-4 mb-4 text-center" >
                         <div class="card">
-                            <img src="{{Imagen}}" class="card-img-top" alt="Imagen del producto" style="height: 200px; object-fit: cover;">
+                            <img src="{{Imagen}}" class="card-img-top" alt="Imagen del accesorio" style="height: 200px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title">{{PrendaNombre}}</h5>
                                 <p class="card-text">{{Descripcion}} <br>{{Talla}} <br> ${{Precio}} <br>{{Stock}}</p>
@@ -25,9 +25,9 @@
                     </div>
                 {{/each}}
             {{else}}
-                <h3 class="text-center text-uppercase">NO EXISTEN PRODUCTOS</h3>
+                <h3 class="text-center text-uppercase">NO EXISTEN ACCESORIOS</h3>
                 <a href="/productos/add/" class="btn btn-success">
-                    <i class="fa-solid fa-pencil">CREAR PRODUCTO</i>
+                    <i class="fa-solid fa-pencil">CREAR ACCESORIO</i>
                 </a>
             {{/if}}
         </div>
